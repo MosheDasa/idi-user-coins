@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",               // חשוב עבור Electron
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "build"                   // קובצי js ייווצרו פה
+  },
+  "include": ["src", "src/type/.d.ts", "src/main.ts"]
+}
