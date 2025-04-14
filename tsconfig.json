@@ -9,5 +9,5 @@
     "skipLibCheck": true,
     "outDir": "build"                   // קובצי js ייווצרו פה
   },
-  "include": ["src", "src/type/.d.ts", "src/main.ts"]
+  "include": ["src", "src/type/.d.ts", "src/main.tsx"]
 }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { inputData } from '../type/data';
+import { inputData } from '../../type/data';
 
  
-const DiscApp: React.FC<{ inputData: inputData | null }> = ({ inputData }) => {
+const DiscApp: React.FC = () => {
 
   useEffect(() => {
     

@@ -1,4 +1,3 @@
-// api.ts
 import axios from 'axios';
 
 export interface UserData {

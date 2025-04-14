@@ -7,5 +7,3 @@ contextBridge.exposeInMainWorld('electronAPI', {
     });
   }
 });
-
-export {};

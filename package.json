@@ -1,11 +1,13 @@
 {
   "name": "popup-react-ts",
   "version": "1.0.0",
-  "main": "build/main.js",
+  "main": "build/main/index.js",
   "scripts": {
-    "build": "webpack --mode=development && tsc",
+    "dev": "webpack --mode=development --watch",
     "start": "npm run build && electron .",
-    "dev": "webpack --mode=development --watch"
+    "app" : "electron .",
+    "build": "webpack && tsc",
+    "tsc":"tsc"
   },
   "devDependencies": {
     "@types/react": "^19.1.0",

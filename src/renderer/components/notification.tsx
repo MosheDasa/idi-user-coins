@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { inputData } from '../type/data';
 const log = require('electron-log');
  
 const Notification: React.FC = () => {
@@ -7,9 +6,7 @@ const Notification: React.FC = () => {
    const [amount, setAmount] = useState('0');
  
    useEffect(() => {
-     window.electronAPI?.onData(({ isPopup , userId }) => {
-      
-     });
+    
    }, []);
  
    return (
