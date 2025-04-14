@@ -18,7 +18,7 @@ export async function createNotificationWindow() {
     resizable: false,
     alwaysOnTop: true,
     skipTaskbar: true,
-    opacity: 133,
+    opacity: 0,
     show: true,
     webPreferences: {
       preload: path.join(__dirname, '..', 'preload.js'),
@@ -30,12 +30,15 @@ export async function createNotificationWindow() {
 
   win.once('ready-to-show', () => {
     win.webContents.send('popup-data', {
-      name: data?.name || 'ברירת מחדל',
-      amount: data?.lng || '0'
+      isPopup: true,
+      userId: data?.name || 'ברירת מחדל',
+      policyNr: parseInt(data?.lng || '0')
     });
 
     win.show();
     fadeIn(win);
-    fadeOutAndClose(win);
+    fadeOutAndClose(win, 10000); // 10 שניות
   });
+
+  return win;
 }

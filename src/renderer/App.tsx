@@ -1,23 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { inputData } from '../type/data';
-import  Notification  from '../renderer/components/notification';
-import  DiscApp  from '../renderer/components/disc-app';
-declare global {
-  interface Window {
-    electronAPI?: {
-      onData: (cb: (data: inputData) => void) => void;
-    };
-  }
-}
+import Notification from './components/notification';
+import DiscApp from './components/disc-app';
 
 const App: React.FC = () => {
- 
-
   return (
     <>
-    <DiscApp />
-    <Notification />
-  
+      <DiscApp />
+      <Notification />
     </>
   );
 };

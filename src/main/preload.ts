@@ -22,5 +22,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
         console.error('שגיאה בטיפול בנתונים:', error);
       }
     });
+  },
+  
+  showNotification: async (data: { userId: string; policyNr: number }) => {
+    return await ipcRenderer.invoke('show-notification', data);
   }
 });

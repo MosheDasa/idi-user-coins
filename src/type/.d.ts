@@ -9,6 +9,7 @@ declare global {
       onData: (
         cb: (data: inputData) => void
       ) => void;
+      showNotification: (data: { userId: string; policyNr: number }) => Promise<boolean>;
     };
   }
 }

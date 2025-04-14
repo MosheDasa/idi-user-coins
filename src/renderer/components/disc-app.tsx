@@ -14,6 +14,7 @@ const DiscApp: React.FC = () => {
           name: data.userId,
           lng: data.policyNr?.toString() || '0'
         });
+        setIsVisible(true);
       }
     };
 

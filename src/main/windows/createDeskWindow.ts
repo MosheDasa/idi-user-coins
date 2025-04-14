@@ -8,17 +8,17 @@ export async function createDeskWindow() {
   const { width, height } = display.workAreaSize;
 
   const win = new BrowserWindow({
-    width: 300,
-    height: 260,
-    x: width - 320,
-    y: height - 280,
+    width: 400,
+    height: 300,
+    x: Math.floor((width - 400) / 2),
+    y: Math.floor((height - 300) / 2),
     frame: false,
     transparent: true,
     resizable: false,
     alwaysOnTop: true,
-    skipTaskbar: true,
+    skipTaskbar: false,
     opacity: 1,
-    show: false,
+    show: true,
     webPreferences: {
       preload: path.join(__dirname, '..', 'preload.js'),
       contextIsolation: true
@@ -29,9 +29,12 @@ export async function createDeskWindow() {
 
   win.once('ready-to-show', () => {
     win.webContents.send('popup-data', {
-      name: data?.name || 'ברירת מחדל',
-      amount: data?.lng || '0'
+      isPopup: false,
+      userId: data?.name || 'ברירת מחדל',
+      policyNr: parseInt(data?.lng || '0')
     });
     win.show();
   });
+
+  return win;
 }
