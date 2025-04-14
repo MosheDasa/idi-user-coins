@@ -5,21 +5,46 @@ export interface UserData {
   lng: string;
 }
 
+const API_CONFIG = {
+  baseURL: 'https://jsonplaceholder.typicode.com',
+  timeout: 5000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+};
+
+const api = axios.create(API_CONFIG);
+
 export async function fetchUserData(): Promise<UserData | null> {
   try {
-    const res = await axios.get('https://jsonplaceholder.typicode.com/users');
-    const data = res.data;
+    const response = await api.get('/users');
+    const data = response.data;
 
-    if (Array.isArray(data) && data.length > 0) {
-      return {
-        name: data[0].name,
-        lng: data[0].address.geo.lng,
-      };
+    if (!Array.isArray(data) || data.length === 0) {
+      console.warn('לא נמצאו נתוני משתמש');
+      return null;
     }
 
-    return null;
+    const user = data[0];
+    if (!user?.name || !user?.address?.geo?.lng) {
+      console.warn('חסרים נתונים נדרשים במשתמש');
+      return null;
+    }
+
+    return {
+      name: user.name,
+      lng: user.address.geo.lng,
+    };
   } catch (error) {
-    console.error('שגיאה בבקשת API:', error);
+    if (axios.isAxiosError(error)) {
+      console.error('שגיאת API:', error.message);
+      if (error.response) {
+        console.error('סטטוס:', error.response.status);
+        console.error('נתונים:', error.response.data);
+      }
+    } else {
+      console.error('שגיאה לא ידועה:', error);
+    }
     return null;
   }
 }
