@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "webpack --mode=development --watch",
     "start": "npm run build && electron .",
-    "app" : "electron .",
+    "app": "electron .",
     "build": "webpack && tsc",
-    "tsc":"tsc"
+    "tsc": "tsc",
+    "show-notification": "electron . --show-notification --name \"$npm_config_name\" --amount \"$npm_config_amount\""
   },
   "devDependencies": {
     "@types/react": "^19.1.0",
@@ -34,7 +35,9 @@
     "protocols": [
       {
         "name": "popupapp",
-        "schemes": ["popupapp"]
+        "schemes": [
+          "popupapp"
+        ]
       }
     ]
   }
